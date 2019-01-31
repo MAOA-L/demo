@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * 配置不需要认证的页面
      */
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web){
         web.ignoring().antMatchers("/","/noAuthenticate","/static");
     }
 
@@ -99,13 +99,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(customAccessDeniedHandlerImpl);
 
     }
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.formLogin()                    //  定义当需要用户登录时候，转到的登录页面。
-//                .and()
-//                .authorizeRequests()        // 定义哪些URL需要被保护、哪些不需要被保护
-//                .antMatchers("/index").permitAll()
-//                .anyRequest().authenticated();               // 任何请求,登录后可以访问
-//
-//    }
 }

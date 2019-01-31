@@ -24,7 +24,7 @@ public class UserService implements UserDetailsService {
     private RoleService roleService;
 
     @Autowired
-    public void setRoleService(UserMapper userImpl, RoleService roleService) {
+    public UserService(UserMapper userImpl, RoleService roleService) {
         this.userMapper = userImpl;
         this.roleService = roleService;
     }
