@@ -46,7 +46,7 @@
   
  # 以下为流程图
  ![总流程图](https://github.com/MAOA-L/demo/blob/master/src/main/resources/static/images/ExplainThePriciple/总流程.jpg)
- ![登录流程图](https://github.com/MAOA-L/demo/blob/master/src/main/resources/static/images/ExplainThePriciple/登录流程.jpg)
+ ![登录流程图](https://github.com/MAOA-L/demo/blob/master/src/main/resources/static/images/ExplainThePriciple/登陆流程.jpg)
  
   
   
