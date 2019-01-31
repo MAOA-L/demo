@@ -14,7 +14,7 @@ public interface RoleMapper extends JpaRepository<Role, Integer> {
 
     //自定义sql语句并且开启本地sql
     //根据用户名查找该用户所有权限
-    @Query(value = "select r.* from role r,user_role ur where ur.username = ?1 and ur.id = r.id", nativeQuery = true)
+    @Query(value = "select r.* from role r,user_role ur where ur.username = ?1 and ur.rid = r.id", nativeQuery = true)
     List<Role> findRolesOfUser(String username);
 
     //根据resource的主键查找resource允许的所有权限
