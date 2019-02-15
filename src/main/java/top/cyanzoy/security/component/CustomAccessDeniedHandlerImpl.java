@@ -20,7 +20,7 @@ import java.io.IOException;
 public class CustomAccessDeniedHandlerImpl extends AbstractAuthenticationTargetUrlRequestHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
-
+        System.out.println("权限不足");
         getRedirectStrategy().sendRedirect(request, response, "/403");
 
     }

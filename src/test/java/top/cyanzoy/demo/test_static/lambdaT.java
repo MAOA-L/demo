@@ -41,6 +41,9 @@ public class lambdaT {
         lambdaT b = a.func(123);
         System.out.println(b);
 
+//        ((HttpSecurity)((HttpSecurity)((AuthorizedUrl)http.authorizeRequests().anyRequest()).authenticated().and()).formLogin().and()).httpBasic();
+
+
     }
 
 }

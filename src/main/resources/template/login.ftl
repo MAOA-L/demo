@@ -9,14 +9,25 @@
     <title>Please sign in</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+    <style>
+        .error{
+            height: 40px;
+            line-height: 40px;
+            background-color: rgba(255,106,106,0.2);
+            text-align: center;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" method="post" action="/mydemo/login">
-        <h2 class="form-signin-heading">登录</h2>
+    <form class="form-signin" method="post" action="userLogin">
+        <h2 class="form-signin-heading" style="text-align: center">登录</h2>
+        <div style="color: red" class="${class!}">${msg!}</div>
         <p>
             <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+            <input value="${username!}" type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
         </p>
         <p>
             <label for="password" class="sr-only">Password</label>

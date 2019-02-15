@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <span>名字:${User.getName()}</span>
+    <span>名字:${User.getName()!}</span>
     <span></span>
     <span></span>
 
@@ -15,8 +15,6 @@
         (function (ass) {
             console.log(ass)
         })("这里是参数")
-
-
     </script>
 
 </body>

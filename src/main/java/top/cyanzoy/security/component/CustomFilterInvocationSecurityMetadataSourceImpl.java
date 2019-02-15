@@ -54,6 +54,7 @@ public class CustomFilterInvocationSecurityMetadataSourceImpl implements FilterI
         for (int i = 0; i < size; i++) {
             values[i] = roles.get(i).getRole_user();
         }
+        System.out.println(requestUrl+"所需要的权限为");
         return SecurityConfig.createList(values);
     }
 

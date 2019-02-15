@@ -19,15 +19,22 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mysql-connector.version>5.1.39</mysql-connector.version>
-        <spring-boot-devtools.version>2.1.2.RELEASE</spring-boot-devtools.version>
+        <!--<mysql-connector.version>5.1.39</mysql-connector.version>-->
         <java.version>1.8</java.version>
-        <gson.version>2.8.5</gson.version>
         <fastjson.version>1.2.56</fastjson.version>
         <druid.version>1.1.12</druid.version>
         <beanutils.version>1.9.3</beanutils.version>
     </properties>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>2.1.2.RELEASE</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -64,14 +71,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <version>${spring-boot-devtools.version}</version>
         </dependency>
 
         <!--数据库operate-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.1.2.RELEASE</version>
         </dependency>
 
         <!--权限-->
@@ -88,8 +93,8 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
         </dependency>
+
         <!--fastjosn用于json->bean-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -107,6 +112,12 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${beanutils.version}</version>
+        </dependency>
+        <!--节省代码的工具-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
 

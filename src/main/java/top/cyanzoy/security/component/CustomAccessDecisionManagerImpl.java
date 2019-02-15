@@ -24,7 +24,7 @@ public class CustomAccessDecisionManagerImpl implements AccessDecisionManager {
 
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> collection) throws AccessDeniedException, InsufficientAuthenticationException {
-
+        System.out.println("开始对比用户权限和访问所需权限");
         for(Iterator<ConfigAttribute> iterator = collection.iterator();iterator.hasNext();){
             ConfigAttribute ca = iterator.next();
             String needRole = ca.getAttribute();

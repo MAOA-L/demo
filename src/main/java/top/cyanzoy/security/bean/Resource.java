@@ -1,5 +1,8 @@
 package top.cyanzoy.security.bean;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
@@ -8,6 +11,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "resource")
+@Setter
+@Getter
 public class Resource {
 
     @Id
@@ -18,27 +23,27 @@ public class Resource {
 
     private String res_name;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getRes_name() {
-        return res_name;
-    }
-
-    public void setRes_name(String res_name) {
-        this.res_name = res_name;
-    }
+//    public Integer getId() {
+//        return id;
+//    }
+//
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
+//
+//    public String getUrl() {
+//        return url;
+//    }
+//
+//    public void setUrl(String url) {
+//        this.url = url;
+//    }
+//
+//    public String getRes_name() {
+//        return res_name;
+//    }
+//
+//    public void setRes_name(String res_name) {
+//        this.res_name = res_name;
+//    }
 }
