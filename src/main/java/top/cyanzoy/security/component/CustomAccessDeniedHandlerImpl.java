@@ -3,6 +3,10 @@ package top.cyanzoy.security.component;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -18,9 +22,10 @@ import java.io.IOException;
  */
 @Component
 public class CustomAccessDeniedHandlerImpl extends AbstractAuthenticationTargetUrlRequestHandler implements AccessDeniedHandler {
+
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
-        System.out.println("权限不足");
+//        System.out.println("权限不足-");
         getRedirectStrategy().sendRedirect(request, response, "/403");
 
     }

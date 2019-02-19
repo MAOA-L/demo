@@ -1,5 +1,11 @@
 package top.cyanzoy.security.bean;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +18,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
+@Setter
+@Getter
+@ToString
 public class User{
 
     @Id
@@ -20,29 +29,4 @@ public class User{
     @Column(name = "pwd")
     private String password;
 
-    public User(){}
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }

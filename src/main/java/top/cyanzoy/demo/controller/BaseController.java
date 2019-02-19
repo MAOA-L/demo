@@ -36,5 +36,11 @@ public class BaseController {
         System.out.println("输出一下authentication中有什么"+authentication);
         return "index";
     }
+    @RequestMapping("/prevurl")
+    @ResponseBody
+    public String prevurl(HttpServletRequest request, HttpServletResponse response, Model model){
+        return "prevurl";
+    }
+
 
 }

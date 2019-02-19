@@ -31,6 +31,8 @@ spring:
   jpa:
       show-sql: true
       open-in-view: true
+      hibernate:
+        ddl-auto: update # 数据库中不存在相应表则创建
 
   freemarker:
     allow-request-override: true # 是否允许HttpServletRequest的属性覆盖controller中的model的同名项
@@ -39,3 +41,5 @@ spring:
     suffix: .ftl
     template-loader-path: ["classpath:/template"]
 
+  mvc:
+    throw-exception-if-no-handler-found: true

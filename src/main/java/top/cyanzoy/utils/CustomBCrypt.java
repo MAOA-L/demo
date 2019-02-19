@@ -39,4 +39,10 @@ public class CustomBCrypt {
         return bCryptPasswordEncoder.encode(rawPassword);
     }
 
+    public static void main(String[] args) {
+        SecureRandom secureRandom = new SecureRandom();
+        CustomBCrypt customBCrypt = new CustomBCrypt(12, secureRandom);
+        System.out.println(customBCrypt.encode("123456"));
+    }
+
 }

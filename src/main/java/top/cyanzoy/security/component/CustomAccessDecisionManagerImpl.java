@@ -21,29 +21,56 @@ import java.util.Iterator;
  */
 @Component
 public class CustomAccessDecisionManagerImpl implements AccessDecisionManager {
-
+    private Boolean isAuth = false;
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> collection) throws AccessDeniedException, InsufficientAuthenticationException {
         System.out.println("开始对比用户权限和访问所需权限");
-        for(Iterator<ConfigAttribute> iterator = collection.iterator();iterator.hasNext();){
-            ConfigAttribute ca = iterator.next();
-            String needRole = ca.getAttribute();
-            if ("ROLE_LOGIN".equals(needRole)) {
+
+        collection.iterator().forEachRemaining(e -> {
+            String needRole = e.getAttribute();
+            if ("ROLE_login".equals(needRole)) {
+                // needRole为role_login时表示url在登录后即可访问,所以判断身份是否为匿名用户
                 if (authentication instanceof AnonymousAuthenticationToken) {
                     throw new BadCredentialsException("未登录");
-                } else
-                    return;
-            }
-            //遍历当前用户所具有的权限
-            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-            for (GrantedAuthority authority: authorities) {
-                if(authority.getAuthority().equals(needRole)){
+                } else{
+                    System.out.println("登录即可,已登录");
+                    isAuth = true;
                     return;
                 }
             }
+
+            // 遍历当前用户所具有的权限
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            for (GrantedAuthority authority: authorities) {
+                if(authority.getAuthority().equals(needRole)){
+                    System.out.println("拥有权限");
+                    isAuth = true;
+                    return;
+                }
+            }
+        });
+
+//        for(Iterator<ConfigAttribute> iterator = collection.iterator();iterator.hasNext();){
+//            ConfigAttribute ca = iterator.next();
+//            String needRole = ca.getAttribute();
+//            if ("ROLE_LOGIN".equals(needRole)) {
+//                if (authentication instanceof AnonymousAuthenticationToken) {
+//                    throw new BadCredentialsException("未登录");
+//                } else
+//                    return;
+//            }
+//            //遍历当前用户所具有的权限
+//            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+//            for (GrantedAuthority authority: authorities) {
+//                if(authority.getAuthority().equals(needRole)){
+//                    return;
+//                }
+//            }
+//        }
+        //没有匹配到任何权限 抛出AccessDeniedException
+        if(!isAuth){
+            throw new AccessDeniedException("权限不足");
         }
-        //没有匹配到任何权限
-        throw new AccessDeniedException("权限不足");
     }
 
     @Override

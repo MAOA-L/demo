@@ -1,5 +1,8 @@
 package top.cyanzoy.demo.config;
 
+import cn.org.rapid_framework.freemarker.directive.BlockDirective;
+import cn.org.rapid_framework.freemarker.directive.ExtendsDirective;
+import cn.org.rapid_framework.freemarker.directive.OverrideDirective;
 import freemarker.template.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +29,9 @@ public class CustomFreeMarkerConfig {
     @PostConstruct
     public void afterPropertiesSet() throws TemplateModelException {
         this.configuration.setSharedVariable("freemarker", freeMarkerBean);
+        this.configuration.setSharedVariable("block", new BlockDirective());
+        this.configuration.setSharedVariable("override", new OverrideDirective());
+        this.configuration.setSharedVariable("extends", new ExtendsDirective());
     }
 
 }

@@ -67,7 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/", "/register","/static", "/userLogin", "/images/**", "/css/**", "/js/**");
+        web.ignoring().antMatchers("/", "/register","/static/**", "/font-awesome/**",
+                "/userLogin", "/images/**", "/img/**", "/css/**", "/js/**", "/403");
     }
 
     /**
@@ -89,11 +90,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .permitAll()
-                .failureHandler(customAuthenticationFailureHandler)
-                .successHandler(customAuthenticationSuccessHandler)
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+//                .permitAll()
+//                .failureHandler(customAuthenticationFailureHandler)
+//                .successHandler(customAuthenticationSuccessHandler)
                 .and()
                 .logout()
                 .permitAll()

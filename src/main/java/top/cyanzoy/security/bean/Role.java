@@ -1,5 +1,8 @@
 package top.cyanzoy.security.bean;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
@@ -8,29 +11,19 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "role")
+@Setter
+@Getter
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String role_user;
+    //角色名
+    private String roleName;
 
-    private String role_admin;
+    //角色注释
+    private String roleAnnotation;
 
-    public String getRole_user() {
-        return role_user;
-    }
 
-    public void setRole_user(String role_user) {
-        this.role_user = role_user;
-    }
-
-    public String getRole_admin() {
-        return role_admin;
-    }
-
-    public void setRole_admin(String role_admin) {
-        this.role_admin = role_admin;
-    }
 }

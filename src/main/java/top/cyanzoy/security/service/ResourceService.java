@@ -39,5 +39,4 @@ public class ResourceService {
         return roleMapper.findRolesOfResource(id);
     }
 
-
 }

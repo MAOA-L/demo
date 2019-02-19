@@ -24,6 +24,8 @@
         <fastjson.version>1.2.56</fastjson.version>
         <druid.version>1.1.12</druid.version>
         <beanutils.version>1.9.3</beanutils.version>
+        <rapid-framework.version>4.0.5</rapid-framework.version>
+        <common-lang.version>2.6</common-lang.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
@@ -59,6 +61,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <!--模板继承-->
+        <!-- https://mvnrepository.com/artifact/com.googlecode.rapid-framework/rapid-generator -->
+        <dependency>
+            <groupId>com.googlecode.rapid-framework</groupId>
+            <artifactId>rapid-core</artifactId>
+            <version>${rapid-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${common-lang.version}</version>
         </dependency>
 
         <dependency>

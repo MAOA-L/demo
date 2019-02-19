@@ -40,11 +40,12 @@ public class CustomFilterInvocationSecurityMetadataSourceImpl implements FilterI
             return null;
         }
 
+        // 根据url获取此url的权限信息
         Resource resource = resourceService.getResourceByUrl(requestUrl);
 
-        //如果没有匹配的url则说明大家都可以访问
+        //如果该url没有匹配则登录后即可访问
         if(resource == null) {
-            return SecurityConfig.createList("ROLE_LOGIN");
+            return SecurityConfig.createList("ROLE_login");
         }
 
         //将resource所需要到的roles按框架要求封装返回（ResourceService里面的getRoles方法是基于RoleImpl实现的）
@@ -52,9 +53,12 @@ public class CustomFilterInvocationSecurityMetadataSourceImpl implements FilterI
         int size = roles.size();
         String[] values = new String[size];
         for (int i = 0; i < size; i++) {
-            values[i] = roles.get(i).getRole_user();
+            values[i] = roles.get(i).getRoleName();
         }
-        System.out.println(requestUrl+"所需要的权限为");
+        System.out.print(requestUrl+"所需要的权限为");
+        for (String s:values) {
+            System.out.println(s);
+        }
         return SecurityConfig.createList(values);
     }
 

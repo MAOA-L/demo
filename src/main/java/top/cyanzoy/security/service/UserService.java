@@ -49,6 +49,9 @@ public class UserService implements UserDetailsService {
         }
         //查到User后将其封装为UserDetails的实现类的实例供程序调用
         //用该User和它对应的Role实体们构造UserDetails的实现类
+        System.out.println("输出用户的角色信息:");
+        roleService.getRolesOfUser(user.getUsername()).forEach(e -> System.out.println(e.getRoleName()
+                + "," + e.getRoleAnnotation()));
         return new UserDetailsImpl(user, roleService.getRolesOfUser(user.getUsername()));
     }
 }

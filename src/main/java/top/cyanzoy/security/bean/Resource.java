@@ -21,29 +21,6 @@ public class Resource {
 
     private String url;
 
-    private String res_name;
+    private String roleName;
 
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
-//
-//    public String getUrl() {
-//        return url;
-//    }
-//
-//    public void setUrl(String url) {
-//        this.url = url;
-//    }
-//
-//    public String getRes_name() {
-//        return res_name;
-//    }
-//
-//    public void setRes_name(String res_name) {
-//        this.res_name = res_name;
-//    }
 }
