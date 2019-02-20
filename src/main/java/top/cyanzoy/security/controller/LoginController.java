@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import top.cyanzoy.security.bean.User;
+import top.cyanzoy.security.component.UserDetailsImpl;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,13 +36,12 @@ public class LoginController {
      * @return 未登录则返回登录页，已登录用户请求登录页则直接跳转至首页
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String logins(){
-        System.out.println("登陆Controller");
+    public String logins(HttpServletRequest request, HttpServletResponse response){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("输出一下authentication="+authentication);
-        if(!(authentication instanceof AnonymousAuthenticationToken)){
+        System.out.println("登陆Controller,用户认证情况:"+authentication);
+        if(authentication != null && authentication.isAuthenticated()){
             // 表示用户身份为非匿名用户。
-            return "/index";
+            return "redirect:index";
         }
 
         return "/login";
@@ -62,7 +62,6 @@ public class LoginController {
         try {
             Authentication authentication = authenticationManager.authenticate(uPT);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
             HttpSession session = request.getSession();
             session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 
@@ -70,16 +69,17 @@ public class LoginController {
             try{
                 target = httpSessionRequestCache.getRequest(request, response).getRedirectUrl()
                         .replace("error", "index");
+                System.out.println("获取到的url地址为" + target);
             }catch (Exception e){
                 System.out.println("没有获取跳转地址");
             }
             model.addAttribute("User", authentication);
 
         }catch (BadCredentialsException e){
-            throw new CustomBadCredentialsException("密码错误");
+            throw new CustomBadCredentialsException("账号或密码错误");
         }
         // 返回请求的页面
-        return "redirect:/" + target;
+        return "redirect:" + target;
 
     }
 
