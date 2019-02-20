@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import top.cyanzoy.core.AuthenticationException;
 import top.cyanzoy.security.controller.CustomBadCredentialsException;
+import top.cyanzoy.security.controller.CustomBadUserException;
 
 /**
  * @author MAOA-L
@@ -20,14 +21,23 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(CustomBadCredentialsException.class)
     @ResponseStatus(HttpStatus.OK)
-    public String badException(CustomBadCredentialsException be, Model model){
+    public String badCredentialsException(CustomBadCredentialsException be, Model model){
         model.addAttribute("class", "error");
         model.addAttribute("msg", be.getMessage());
         return "login";
     }
+
+    @ExceptionHandler(CustomBadUserException.class)
+    @ResponseStatus(HttpStatus.OK)
+    public String badUserException(CustomBadUserException be, Model model){
+        model.addAttribute("class", "error");
+        model.addAttribute("msg", be.getMessage());
+        return "login";
+    }
+
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.OK)
-    public String noHandlerFoundException (CustomBadCredentialsException be, Model model){
+    public String noHandlerFoundException (){
         System.out.println("========捕获404异常");
         return "/_404";
     }

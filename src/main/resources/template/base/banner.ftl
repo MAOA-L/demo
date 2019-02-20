@@ -25,8 +25,8 @@
                         <span>
                             <img alt="image" class="img-circle" src="/${freemarker.name}/img/profile_small.jpg" />
                         </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">用户名</strong>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${username!}</strong>
                             </span> <span class="text-muted text-xs block">职位<b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">设置</a></li>

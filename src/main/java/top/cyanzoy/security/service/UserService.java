@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.cyanzoy.security.bean.User;
+import top.cyanzoy.security.controller.CustomBadUserException;
 import top.cyanzoy.security.dao.UserMapper;
 import top.cyanzoy.security.component.UserDetailsImpl;
 
@@ -52,6 +53,12 @@ public class UserService implements UserDetailsService {
         System.out.println("输出用户的角色信息:");
         roleService.getRolesOfUser(user.getUsername()).forEach(e -> System.out.println(e.getRoleName()
                 + "," + e.getRoleAnnotation()));
+
+        if(!user.getActive()){
+          // 未激活用户
+          throw new CustomBadUserException("未激活用户");
+        }
+
         return new UserDetailsImpl(user, roleService.getRolesOfUser(user.getUsername()));
     }
 }

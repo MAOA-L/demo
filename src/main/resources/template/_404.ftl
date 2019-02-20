@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MeeFoCloud | 500 Error</title>
+    <title>MeeFoCloud | 404 Error</title>
 
     <link href="/${freemarker.name}/css/bootstrap.min.css" rel="stylesheet">
     <link href="/${freemarker.name}/font-awesome/css/font-awesome.css" rel="stylesheet">

@@ -1,5 +1,7 @@
 package top.cyanzoy.security.component;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,28 +23,22 @@ import java.util.List;
 
 //一定要有一个类，实现UserDetails接口，供程序调用
 @Component
+@Setter
+@Getter
 public class UserDetailsImpl implements UserDetails {
 
-
-    private RoleService roleService;
+//    private static final long serialVersionUID =
 
     private String username;
 
     private String password;
 
+    private Boolean active;
+
+    private Boolean superuser;
+
     //包含着用户对应的所有Role，在使用时调用者给对象注入roles
     private List<Role> roles;
-
-
-    public void setRoles(List<Role> roles){
-        this.roles = roles;
-    }
-
-
-    @Autowired
-    public UserDetailsImpl(RoleService roleService){
-        this.roleService = roleService;
-    }
 
     //无参构造
     public UserDetailsImpl() {
@@ -58,6 +54,8 @@ public class UserDetailsImpl implements UserDetails {
     public UserDetailsImpl(User user, List<Role> roles) {
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.active = user.getActive();
+        this.superuser = user.getSuperuser();
         this.roles = roles;
     }
 
@@ -70,22 +68,13 @@ public class UserDetailsImpl implements UserDetails {
         return authorities;
     }
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
     /**
      * 判断账号是否已经过期，默认没有过期
      * @return true
      */
     @Override
     public boolean isAccountNonExpired() {
+
         return true;
     }
 
@@ -113,6 +102,6 @@ public class UserDetailsImpl implements UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.getActive();
     }
 }

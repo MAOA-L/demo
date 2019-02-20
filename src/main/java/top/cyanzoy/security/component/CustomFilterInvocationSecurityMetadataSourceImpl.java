@@ -45,6 +45,7 @@ public class CustomFilterInvocationSecurityMetadataSourceImpl implements FilterI
 
         //如果该url没有匹配则登录后即可访问
         if(resource == null) {
+            System.out.println("该url未在数据库中配置权限,登录即可访问");
             return SecurityConfig.createList("ROLE_login");
         }
 
@@ -55,7 +56,7 @@ public class CustomFilterInvocationSecurityMetadataSourceImpl implements FilterI
         for (int i = 0; i < size; i++) {
             values[i] = roles.get(i).getRoleName();
         }
-        System.out.print(requestUrl+"所需要的权限为");
+        System.out.print(requestUrl+"所需要的权限为:");
         for (String s:values) {
             System.out.println(s);
         }
