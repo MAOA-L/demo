@@ -25,7 +25,7 @@ public class CustomFilterInvocationSecurityMetadataSourceImpl implements FilterI
     private ResourceService resourceService;
 
     @Autowired
-    public void setResourceService(ResourceService resourceService) {
+    public void CustomFilterInvocationSecurityMetadataSourceImpl(ResourceService resourceService) {
         this.resourceService = resourceService;
     }
 

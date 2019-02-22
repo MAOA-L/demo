@@ -20,7 +20,6 @@ import java.util.Collection;
  */
 @Component
 public class CustomAccessDecisionManagerImpl implements AccessDecisionManager {
-    private Boolean isAuth = false;
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> collection) throws AccessDeniedException, InsufficientAuthenticationException {
         System.out.println("开始对比用户权限和访问所需权限");

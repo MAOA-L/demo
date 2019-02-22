@@ -47,6 +47,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--spring security 权限验证-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -63,7 +64,6 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
         <!--模板继承-->
-        <!-- https://mvnrepository.com/artifact/com.googlecode.rapid-framework/rapid-generator -->
         <dependency>
             <groupId>com.googlecode.rapid-framework</groupId>
             <artifactId>rapid-core</artifactId>
@@ -75,11 +75,6 @@
             <version>${common-lang.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope> <!-- 表示构建编译阶段不需要，没有直接应用而是在运行的时候动态加载并实例化 -->
-        </dependency>
 
         <!--配置热部署-->
         <dependency>
@@ -91,6 +86,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope> <!-- 表示构建编译阶段不需要，没有直接应用而是在运行的时候动态加载并实例化 -->
         </dependency>
 
         <!--权限-->
@@ -133,8 +133,11 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-
-
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

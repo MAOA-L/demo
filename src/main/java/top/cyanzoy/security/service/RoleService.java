@@ -18,7 +18,7 @@ public class RoleService {
     private RoleMapper roleMapper;
 
     @Autowired
-    public void setRoleImpl(RoleMapper roleImpl){
+    public void RoleService(RoleMapper roleImpl){
         this.roleMapper = roleImpl;
     }
 
